@@ -10,14 +10,14 @@ general:
 test:
   override:
     - mvn clean install
-    - bundle exec rspec --format RspecJunitFormatter --out $CIRCLE_TEST_REPORTS/rspec.xml:
+    - RAILS_ENV=test bundle exec rspec -r rspec_junit_formatter --format RspecJunitFormatter -o $CIRCLE_TEST_REPORTS/rspec/junit.xml
+#    - bundle exec rspec --format RspecJunitFormatter --out $CIRCLE_TEST_REPORTS/rspec.xml:
         parallel: true
         files:
           - test0.rb
           - test1.rb
           - test2.rb
           - test3.rb
-
 
 #test:
 #  override:
