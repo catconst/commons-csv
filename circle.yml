@@ -9,10 +9,6 @@ dependencies:
     - bundle exec rspec:
         parallel: true
 
- post:
-   - mkdir -p $CIRCLE_TEST_REPORTS/junit/
-   - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
-
 #        files:
 #          - spec/unit/sample.rb   # can be a direct path to file
 #          - spec/**/*.rb          # or a glob (ruby globs)
