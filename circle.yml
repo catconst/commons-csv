@@ -1,8 +1,15 @@
 test:
-  override:
-    - mkdir -p $CIRCLE_TEST_REPORTS/cucumber:
+ post:
+   - mkdir -p $CIRCLE_TEST_REPORTS/junit/
         parallel: true
-    - bundle exec cucumber --format json --out $CIRCLE_TEST_REPORTS/cucumber/tests.cucumber:
+   - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
         parallel: true
-        files:
-          - spec/feature/*.feature
+
+#test:
+#  override:
+#    - mkdir -p $CIRCLE_TEST_REPORTS/cucumber:
+#        parallel: true
+#    - bundle exec cucumber --format json --out $CIRCLE_TEST_REPORTS/cucumber/tests.cucumber:
+#        parallel: true
+#        files:
+#          - spec/feature/*.feature
