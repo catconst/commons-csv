@@ -1,11 +1,9 @@
 test:
- override:
-   - mkdir -p $CIRCLE_TEST_REPORTS/junit/
-   - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
- 
-#        files:
-#          - spec/unit/sample.rb   # can be a direct path to file
-#          - spec/**/*.rb          # or a glob (ruby globs)
+  override:
+    - bundle exec rspec --format RspecJunitFormatter --out $CIRCLE_TEST_REPORTS/rspec.xml:
+        parallel: true
+        files:
+          - *.rb          # or a glob (ruby globs)
 
 #original
 #test:
