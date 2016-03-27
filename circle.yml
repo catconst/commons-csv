@@ -2,9 +2,9 @@ test:
   override:
     - bundle exec rspec:
         parallel: true
-        files:
-          - spec/unit/sample.rb   # can be a direct path to file
-          - spec/**/*.rb          # or a glob (ruby globs)
+#        files:
+#          - spec/unit/sample.rb   # can be a direct path to file
+#          - spec/**/*.rb          # or a glob (ruby globs)
 
 #test:
 # post:
