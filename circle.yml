@@ -1,4 +1,10 @@
 test:
+## Customize dependencies
+dependencies:
+  pre:
+    gem 'rspec_junit_formatter', '0.2.2'
+    gem install rspec_junit_formatter --version 0.2.2
+
   override:
     - bundle exec rspec:
         parallel: true
