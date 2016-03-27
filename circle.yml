@@ -3,7 +3,10 @@ test:
     - bundle exec rspec --format RspecJunitFormatter --out $CIRCLE_TEST_REPORTS/rspec.xml:
         parallel: true
         files:
-          - *.rb          # or a glob (ruby globs)
+          - test0.rb
+          - test1.rb
+          - test2.rb
+          - test3.rb
 
 #original
 #test:
