@@ -1,12 +1,29 @@
+machine:
+  ruby:
+    version: rbx-2.2.6
+
+general:
+   artifacts:
+     - $CIRCLE_TEST_REPORTS
+     - target
+     
 test:
   override:
-    - bundle exec rspec --format RspecJunitFormatter --out $CIRCLE_TEST_REPORTS/rspec.xml:
-        parallel: true
-        files:
-          - test0.rb
-          - test1.rb
-          - test2.rb
-          - test3.rb
+    - mvn clean install
+  post:
+    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+    - find . -type f -regex ".*/target/failsafe-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+
+
+#test:
+#  override:
+#    - bundle exec rspec --format RspecJunitFormatter --out $CIRCLE_TEST_REPORTS/rspec.xml:
+#        parallel: true
+#        files:
+#          - test0.rb
+#          - test1.rb
+#          - test2.rb
+#          - test3.rb
 
 #original
 #test:
